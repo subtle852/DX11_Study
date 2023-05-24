@@ -1,5 +1,6 @@
 #include "yaGraphicDevice_Dx11.h"
 #include "yaApplication.h"
+#include "yaRenderer.h"
 
 extern ya::Application application;
 
@@ -7,6 +8,21 @@ namespace ya::graphics
 {
 	GraphicDevice_Dx11::GraphicDevice_Dx11()
 	{
+		// 1. graphic device, context 생성
+
+		// 2. 화면에 렌더링 할수 있게 도와주는
+		// swapchain 생성
+
+		// 3. rendertarget,view 생성하고 
+		// 4. 깊이버퍼와 깊이버퍼 뷰 생성해주고
+
+		// 5. 레더타겟 클리어 ( 화면 지우기 )
+		// 6. present 함수로 렌더타겟에 있는 텍스쳐를
+		//    모니터에 그려준다.
+
+		//mRenderTarget->
+		//mRenderTargetView->GetResource();
+
 		// Device, Context 생성
 		HWND hWnd = application.GetHwnd();
 		UINT deviceFlag = D3D11_CREATE_DEVICE_DEBUG;
@@ -97,6 +113,55 @@ namespace ya::graphics
 
 		if (FAILED(pFactory->CreateSwapChain(mDevice.Get(), &dxgiDesc, mSwapChain.GetAddressOf())))
 			return false;
+
+		return true;
+	}
+	bool GraphicDevice_Dx11::CreateBuffer(ID3D11Buffer** buffer, D3D11_BUFFER_DESC* desc, D3D11_SUBRESOURCE_DATA* data)
+	{
+		//D3D11_BUFFER_DESC triangleDesc = {};
+		//triangleDesc.ByteWidth = desc->ByteWidth;
+		//triangleDesc.BindFlags = desc->BindFlags;
+		//triangleDesc.CPUAccessFlags = desc->CPUAccessFlags;
+
+
+		/*D3D11_SUBRESOURCE_DATA triangleData = {};
+		triangleData.pSysMem = vertexes;*/
+
+		if (FAILED(mDevice->CreateBuffer(desc, data, buffer)))
+			return false;
+
+		return true;
+	}
+	bool GraphicDevice_Dx11::CreateShader()
+	{
+		///* [annotation] */
+		//_In_reads_(BytecodeLength)  const void* pShaderBytecode,
+		//	/* [annotation] */
+		//	_In_  SIZE_T BytecodeLength,
+		//	/* [annotation] */
+		//	_In_opt_  ID3D11ClassLinkage* pClassLinkage,
+		//	/* [annotation] */
+		//	_COM_Outptr_opt_  ID3D11VertexShader** ppVertexShader
+		ID3DBlob* vsBlob = nullptr;
+		std::filesystem::path shaderPath 
+			= std::filesystem::current_path().parent_path();
+		shaderPath += L"\\Shader_SOURCE\\";
+
+		std::filesystem::path vsPath(shaderPath.c_str());
+		vsPath += L"TriangleVS.hlsl";
+
+		D3DCompileFromFile(vsPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
+		, "main", "vs_5_0", 0, 0, &ya::renderer::triangleVSBlob, &ya::renderer::errorBlob);
+
+		if (ya::renderer::errorBlob)
+		{
+			OutputDebugStringA((char*)ya::renderer::errorBlob->GetBufferPointer());
+			ya::renderer::errorBlob->Release();
+		}
+
+		mDevice->CreateVertexShader(ya::renderer::triangleVSBlob->GetBufferPointer()
+			, ya::renderer::triangleVSBlob->GetBufferSize()
+			, nullptr , &ya::renderer::triangleVSShader);
 
 		return true;
 	}

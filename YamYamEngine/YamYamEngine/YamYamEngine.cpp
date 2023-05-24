@@ -2,8 +2,10 @@
 //
 
 #include "framework.h"
+#include "yaRenderer.h"
 
 // TODO: 라이브러리 함수의 예제입니다.
 void fnYamYamEngine()
 {
+	//ya::renderer::errorBlob;
 }

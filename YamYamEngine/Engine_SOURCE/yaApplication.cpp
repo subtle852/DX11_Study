@@ -1,4 +1,7 @@
 #include "yaApplication.h"
+#include "yaInput.h"
+#include "yaTime.h"
+#include "yaRenderer.h"
 
 
 namespace ya
@@ -25,10 +28,16 @@ namespace ya
 
 	void Application::Initialize()
 	{
+		Time::Initiailize();
+		Input::Initialize();
+
+		renderer::Initialize();
 	}
 
 	void Application::Update()
 	{
+		Time::Update();
+		Input::Update();
 	}
 
 	void Application::LateUpdate()
@@ -37,6 +46,8 @@ namespace ya
 
 	void Application::Render()
 	{
+		Time::Render();
+
 		graphicDevice->Draw();
 	}
 
@@ -49,6 +60,7 @@ namespace ya
 			mHeight = height;
 
 			graphicDevice = std::make_unique<ya::graphics::GraphicDevice_Dx11>();
+			ya::graphics::GetDevice() = graphicDevice.get();
 		}
 
 		RECT rt = { 0, 0, (LONG)width , (LONG)height };
