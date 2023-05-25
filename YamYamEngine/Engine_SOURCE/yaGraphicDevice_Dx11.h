@@ -20,6 +20,9 @@ namespace ya::graphics
 		bool CreateShader();
 
 		bool CreateTexture(const D3D11_TEXTURE2D_DESC* desc, void* data);
+
+		void BindViewPort(D3D11_VIEWPORT* viewPort);
+
 		void Draw();
 
 	private:
@@ -44,6 +47,8 @@ namespace ya::graphics
 
 		// 더블버퍼링 작업을 진행해주는 swapChain
 		Microsoft::WRL::ComPtr<IDXGISwapChain> mSwapChain;
+
+		D3D11_VIEWPORT mViewPort;
 	};
 
 	inline GraphicDevice_Dx11*& GetDevice()
