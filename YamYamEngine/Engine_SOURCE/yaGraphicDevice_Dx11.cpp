@@ -27,15 +27,15 @@ namespace ya::graphics
 		HWND hWnd = application.GetHwnd();
 		UINT deviceFlag = D3D11_CREATE_DEVICE_DEBUG;
 		D3D_FEATURE_LEVEL featureLevel = (D3D_FEATURE_LEVEL)0;
-		
+
 		//ID3D11Device* pDevice = nullptr;
 		//ID3D11DeviceContext* pContext = nullptr;
 		//ID3D11DeviceContext** ppContext = &pContext;
 		D3D11CreateDevice(nullptr, D3D_DRIVER_TYPE_HARDWARE, nullptr
-		, deviceFlag, nullptr, 0
-		, D3D11_SDK_VERSION
-		, mDevice.GetAddressOf(), &featureLevel
-		, mContext.GetAddressOf());
+			, deviceFlag, nullptr, 0
+			, D3D11_SDK_VERSION
+			, mDevice.GetAddressOf(), &featureLevel
+			, mContext.GetAddressOf());
 
 		// SwapChain
 		DXGI_SWAP_CHAIN_DESC swapChainDesc = {};
@@ -45,7 +45,7 @@ namespace ya::graphics
 
 		if (!CreateSwapChain(&swapChainDesc, hWnd))
 			return;
-		
+
 		// get rendertarget by swapchain
 		if (FAILED(mSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D)
 			, (void**)mRenderTarget.GetAddressOf())))
@@ -68,7 +68,7 @@ namespace ya::graphics
 
 		depthStencilDesc.SampleDesc.Count = 1;
 		depthStencilDesc.SampleDesc.Quality = 0;
-		
+
 		depthStencilDesc.MipLevels = 0;
 		depthStencilDesc.MiscFlags = 0;
 
@@ -90,12 +90,12 @@ namespace ya::graphics
 		//	FLOAT MaxDepth;
 		//} 	D3D11_VIEWPORT;
 
-		mViewPort = 
-		{ 
+		mViewPort =
+		{
 			0.0f, 0.0f
-			, (float)(winRect.right - winRect .left)
+			, (float)(winRect.right - winRect.left)
 			, (float)(winRect.bottom - winRect.top)
-			, 0.0f, 1.0f 
+			, 0.0f, 1.0f
 		};
 
 		BindViewPort(&mViewPort);
@@ -123,7 +123,7 @@ namespace ya::graphics
 		dxgiDesc.BufferDesc.RefreshRate.Denominator = 1;
 		dxgiDesc.BufferDesc.Scaling = DXGI_MODE_SCALING::DXGI_MODE_SCALING_UNSPECIFIED;
 		dxgiDesc.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER::DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;
-		
+
 		dxgiDesc.SampleDesc.Count = 1;
 		dxgiDesc.SampleDesc.Quality = 0;
 
@@ -147,26 +147,15 @@ namespace ya::graphics
 	}
 	bool GraphicDevice_Dx11::CreateBuffer(ID3D11Buffer** buffer, D3D11_BUFFER_DESC* desc, D3D11_SUBRESOURCE_DATA* data)
 	{
-		//D3D11_BUFFER_DESC triangleDesc = {};
-		//triangleDesc.ByteWidth = desc->ByteWidth;
-		//triangleDesc.BindFlags = desc->BindFlags;
-		//triangleDesc.CPUAccessFlags = desc->CPUAccessFlags;
-
-
-		/*D3D11_SUBRESOURCE_DATA triangleData = {};
-		triangleData.pSysMem = vertexes;*/
-
 		if (FAILED(mDevice->CreateBuffer(desc, data, buffer)))
 			return false;
 
 		return true;
 	}
+
 	bool GraphicDevice_Dx11::CreateShader()
 	{
-
-
-
-		std::filesystem::path shaderPath 
+		std::filesystem::path shaderPath
 			= std::filesystem::current_path().parent_path();
 		shaderPath += L"\\Shader_SOURCE\\";
 
@@ -174,7 +163,7 @@ namespace ya::graphics
 		vsPath += L"TriangleVS.hlsl";
 
 		D3DCompileFromFile(vsPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
-		, "main", "vs_5_0", 0, 0, &ya::renderer::triangleVSBlob, &ya::renderer::errorBlob);
+			, "main", "vs_5_0", 0, 0, &ya::renderer::triangleVSBlob, &ya::renderer::errorBlob);
 
 		if (ya::renderer::errorBlob)
 		{
@@ -184,7 +173,7 @@ namespace ya::graphics
 
 		mDevice->CreateVertexShader(ya::renderer::triangleVSBlob->GetBufferPointer()
 			, ya::renderer::triangleVSBlob->GetBufferSize()
-			, nullptr , &ya::renderer::triangleVSShader);
+			, nullptr, &ya::renderer::triangleVSShader);
 
 		std::filesystem::path psPath(shaderPath.c_str());
 		psPath += L"TrianglePS.hlsl";
@@ -242,7 +231,7 @@ namespace ya::graphics
 
 		dxgiDesc.SampleDesc.Count = desc->SampleDesc.Count;
 		dxgiDesc.SampleDesc.Quality = 0;
-		
+
 		dxgiDesc.MipLevels = desc->MipLevels;
 		dxgiDesc.MiscFlags = desc->MiscFlags;
 
@@ -259,7 +248,54 @@ namespace ya::graphics
 	{
 		mContext->RSSetViewports(1, viewPort);
 	}
-	
+
+	void GraphicDevice_Dx11::SetConstantBuffer(ID3D11Buffer* buffer, void* data, UINT size)
+	{
+		D3D11_MAPPED_SUBRESOURCE subRes = {};
+		mContext->Map(buffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &subRes);
+		memcpy(subRes.pData, data, size);
+		mContext->Unmap(buffer, 0);
+	}
+
+	void GraphicDevice_Dx11::BindConstantBuffer(eShaderStage stage, eCBType type, ID3D11Buffer* buffer)
+	{
+		switch (stage)
+		{
+		case eShaderStage::VS:
+			mContext->VSSetConstantBuffers((UINT)type, 1, &buffer);
+			break;
+		case eShaderStage::HS:
+			mContext->HSSetConstantBuffers((UINT)type, 1, &buffer);
+			break;
+		case eShaderStage::DS:
+			mContext->DSSetConstantBuffers((UINT)type, 1, &buffer);
+			break;
+		case eShaderStage::GS:
+			mContext->GSSetConstantBuffers((UINT)type, 1, &buffer);
+			break;
+		case eShaderStage::PS:
+			mContext->PSSetConstantBuffers((UINT)type, 1, &buffer);
+			break;
+		case eShaderStage::CS:
+			mContext->CSSetConstantBuffers((UINT)type, 1, &buffer);
+			break;
+		case eShaderStage::End:
+			break;
+		default:
+			break;
+		}
+	}
+
+	void GraphicDevice_Dx11::BindsConstantBuffer(eShaderStage stage, eCBType type, ID3D11Buffer* buffer)
+	{
+		mContext->VSSetConstantBuffers((UINT)type, 1, &buffer);
+		mContext->HSSetConstantBuffers((UINT)type, 1, &buffer);
+		mContext->DSSetConstantBuffers((UINT)type, 1, &buffer);
+		mContext->GSSetConstantBuffers((UINT)type, 1, &buffer);
+		mContext->PSSetConstantBuffers((UINT)type, 1, &buffer);
+		mContext->CSSetConstantBuffers((UINT)type, 1, &buffer);
+	}
+
 	void GraphicDevice_Dx11::Draw()
 	{
 		// render target clear
@@ -287,16 +323,18 @@ namespace ya::graphics
 		UINT offset = 0;
 
 		mContext->IASetVertexBuffers(0, 1, &renderer::triangleBuffer, &vertexsize, &offset);
+		mContext->IASetIndexBuffer(renderer::triangleIdxBuffer, DXGI_FORMAT_R32_UINT, 0);
+
 		mContext->IASetInputLayout(renderer::triangleLayout);
 		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 		//Bind VS, PS 
-
 		mContext->VSSetShader(renderer::triangleVSShader, 0, 0);
 		mContext->PSSetShader(renderer::trianglePSShader, 0, 0);
 
 		// Draw Render Target
-		mContext->Draw(3, 0);
+		//mContext->Draw(3, 0);
+		mContext->DrawIndexed(3, 0, 0);
 
 		// 레더타겟에 있는 이미지를 화면에 그려준다
 		mSwapChain->Present(0, 0);
