@@ -17,6 +17,7 @@ namespace ya
 
 	Application::~Application()
 	{
+
 	}
 
 	void Application::Run()

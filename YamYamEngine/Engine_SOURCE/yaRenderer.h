@@ -3,7 +3,7 @@
 #include "yaGraphicDevice_Dx11.h"
 
 using namespace ya::math;
-namespace ya::renderer
+namespace renderer
 {
 	struct Vertex
 	{
@@ -24,4 +24,5 @@ namespace ya::renderer
 
 
 	void Initialize();
+	void Release();
 }

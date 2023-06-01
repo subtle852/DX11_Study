@@ -2,10 +2,10 @@
 
 
 
-namespace ya::renderer
+namespace renderer
 {
 	Vertex vertexes[3] = {};
-	
+
 	// Input Layout (정점 정보)
 	ID3D11InputLayout* triangleLayout = nullptr;
 
@@ -14,10 +14,10 @@ namespace ya::renderer
 	ID3D11Buffer* triangleIdxBuffer = nullptr;
 	ID3D11Buffer* triangleConstantBuffer = nullptr;
 
-	
+
 	// error blob
 	ID3DBlob* errorBlob = nullptr;
-	
+
 	// Vertex Shader code -> Binary Code
 	ID3DBlob* triangleVSBlob = nullptr;
 
@@ -34,7 +34,7 @@ namespace ya::renderer
 	{
 
 
-		
+
 
 	}
 
@@ -103,6 +103,36 @@ namespace ya::renderer
 		SetupState();
 		LoadBuffer();
 		LoadShader();
+	}
+
+	void Release()
+	{
+		if (triangleLayout != nullptr)
+			triangleLayout->Release();
+
+		if (triangleBuffer != nullptr)
+			triangleBuffer->Release();
+
+		if (triangleIdxBuffer != nullptr)
+			triangleIdxBuffer->Release();
+
+		if (triangleConstantBuffer != nullptr)
+			triangleConstantBuffer->Release();
+
+		if (errorBlob != nullptr)
+			errorBlob->Release();
+
+		if (triangleVSBlob != nullptr)
+			triangleVSBlob->Release();
+
+		if (triangleVSShader != nullptr)
+			triangleVSShader->Release();
+
+		if (trianglePSBlob != nullptr)
+			trianglePSBlob->Release();
+
+		if (trianglePSShader != nullptr)
+			trianglePSShader->Release();
 	}
 }
 
