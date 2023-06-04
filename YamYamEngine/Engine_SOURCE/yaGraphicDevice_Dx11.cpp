@@ -326,7 +326,7 @@ namespace ya::graphics
 		mContext->IASetIndexBuffer(renderer::triangleIdxBuffer, DXGI_FORMAT_R32_UINT, 0);
 
 		mContext->IASetInputLayout(renderer::triangleLayout);
-		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 		//Bind VS, PS 
 		mContext->VSSetShader(renderer::triangleVSShader, 0, 0);
@@ -334,9 +334,9 @@ namespace ya::graphics
 
 		// Draw Render Target
 		//mContext->Draw(3, 0);
-		mContext->DrawIndexed(3, 0, 0);
+		mContext->DrawIndexed(6, 0, 0);
 
-		// 레더타겟에 있는 이미지를 화면에 그려준다
+		// 렌더타겟에 있는 이미지를 화면에 그려준다
 		mSwapChain->Present(0, 0);
 	}
 }
