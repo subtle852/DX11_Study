@@ -3,6 +3,7 @@
 #include "yaGraphicDevice_Dx11.h"
 #include "yaMesh.h"
 #include "yaShader.h"
+#include "yaConstantBuffer.h"
 
 using namespace ya::math;
 namespace renderer
@@ -14,12 +15,9 @@ namespace renderer
 	};
 
 	extern Vertex vertexes[];
-	extern ID3D11InputLayout* triangleLayout;
 	extern ya::Mesh* mesh;
-	extern ID3D11Buffer* triangleConstantBuffer;
 	extern ya::Shader* shader;
-	extern ID3D11PixelShader* trianglePSShader;
-
+	extern ya::graphics::ConstantBuffer* constantBuffer;
 
 	void Initialize();
 	void Release();
