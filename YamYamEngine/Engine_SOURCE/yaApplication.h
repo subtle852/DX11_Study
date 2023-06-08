@@ -1,6 +1,7 @@
 #pragma once
 #include "YamYamEngine.h"
 #include "yaGraphicDevice_Dx11.h"
+#include "yaScene.h"
 
 namespace ya
 {
@@ -30,5 +31,7 @@ namespace ya
 		HWND mHwnd;
 		UINT mWidth;
 		UINT mHeight;
+
+		Scene* mScene;
 	};
 }
