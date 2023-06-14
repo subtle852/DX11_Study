@@ -43,6 +43,12 @@
     <Filter Include="GameObject\Component\Script">
       <UniqueIdentifier>{3ed63022-e9ae-4729-a64b-7b0a9080542b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scene\Base">
+      <UniqueIdentifier>{3c64deb7-de3d-41d6-b5a1-90a85f926966}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Manager">
+      <UniqueIdentifier>{3aa709d5-c253-407d-8069-17d7fd213e28}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -102,15 +108,16 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaLayer.h">
       <Filter>Scene\Layer</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaScene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaSceneManager.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaScript.h">
       <Filter>GameObject\Component\Script</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaScene.h">
+      <Filter>Scene\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaSceneManager.h">
+      <Filter>Scene\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaPlayScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMath.cpp">
@@ -158,15 +165,16 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaLayer.cpp">
       <Filter>Scene\Layer</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaScene.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaSceneManager.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaScript.cpp">
       <Filter>GameObject\Component\Script</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaScene.cpp">
+      <Filter>Scene\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaSceneManager.cpp">
+      <Filter>Scene\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaPlayScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)yaMath.inl">

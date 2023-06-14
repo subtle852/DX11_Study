@@ -12,25 +12,29 @@ namespace ya
 
 	void Scene::Initialize()
 	{
-		// 여기서 초기 게임 맵데이터를 세팅해줘야 한다.
+		
 	}
 
 	void Scene::Update()
 	{
-		for (GameObject* gameObj : mGameObjects)
+		for (Layer* layer : mLayers)
 		{
-			gameObj->Update();
+			layer->Update();
 		}
 	}
 
 	void Scene::LateUpdate()
 	{
+		for (Layer* layer : mLayers)
+		{
+			layer->LateUpdate();
+		}
 	}
 	void Scene::Render()
 	{
-		for (GameObject* gameObj : mGameObjects)
+		for (Layer* layer : mLayers)
 		{
-			gameObj->Render();
+			layer->Render();
 		}
 	}
 }
