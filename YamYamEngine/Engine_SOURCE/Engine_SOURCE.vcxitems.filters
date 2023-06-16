@@ -118,6 +118,12 @@
       <Filter>Scene\Manager</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaPlayScene.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaTransform.h">
+      <Filter>GameObject\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaMeshRenderer.h">
+      <Filter>GameObject\Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMath.cpp">
@@ -175,6 +181,12 @@
       <Filter>Scene\Manager</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaPlayScene.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaTransform.cpp">
+      <Filter>GameObject\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaMeshRenderer.cpp">
+      <Filter>GameObject\Component</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)yaMath.inl">

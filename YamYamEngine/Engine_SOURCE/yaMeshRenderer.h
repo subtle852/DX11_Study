@@ -1,14 +1,15 @@
 #pragma once
-#include "yaScene.h"
-
+#include "yaComponent.h"
+#include "yaMesh.h"
+#include "yaShader.h"
 
 namespace ya
 {
-	class PlayScene : public Scene
+	class MeshRenderer : public Component
 	{
 	public:
-		PlayScene();
-		virtual ~PlayScene();
+		MeshRenderer();
+		~MeshRenderer();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
@@ -16,6 +17,7 @@ namespace ya
 		virtual void Render() override;
 
 	private:
-
+		Mesh* mMesh;
+		Shader* mShader;
 	};
 }

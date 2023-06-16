@@ -31,7 +31,10 @@ namespace ya::graphics
 
 		void BindViewPort(D3D11_VIEWPORT* viewPort);
 
+
 		void DrawIndexed(UINT IndexCount, UINT StartIndexLocation, INT BaseVertexLocation);
+		void ClearTarget();
+		void UpdateViewPort();
 		void Draw();
 		void Present();
 
