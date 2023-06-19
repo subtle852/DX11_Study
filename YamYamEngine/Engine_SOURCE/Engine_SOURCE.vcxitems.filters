@@ -125,6 +125,7 @@
       <Filter>GameObject\Component</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaTexture.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaMaterial.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMath.cpp">
@@ -189,6 +190,7 @@
       <Filter>GameObject\Component</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaTexture.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaMaterial.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)yaMath.inl">
