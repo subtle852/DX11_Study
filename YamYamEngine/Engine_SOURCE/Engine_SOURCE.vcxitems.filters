@@ -126,6 +126,7 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaTexture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaMaterial.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaCameraScript.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMath.cpp">
@@ -191,6 +192,7 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaTexture.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMaterial.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaCameraScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)yaMath.inl">

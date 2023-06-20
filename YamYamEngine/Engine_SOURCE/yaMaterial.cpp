@@ -13,6 +13,7 @@ namespace ya::graphics
 
 	Material::~Material()
 	{
+
 	}
 
 	HRESULT Material::Load(const std::wstring& path)

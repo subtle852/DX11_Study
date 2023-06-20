@@ -5,7 +5,7 @@
 #include "yaMeshRenderer.h"
 #include "yaResources.h"
 #include "yaMesh.h"
-
+#include "yaCameraScript.h"
 
 namespace ya
 {
@@ -22,6 +22,8 @@ namespace ya
 		MeshRenderer* mr = player->AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
+
+		player->AddComponent<CameraScript>();
 
 		//GameObject* player2 = new GameObject();
 		//AddGameObject(eLayerType::Player, player2);
