@@ -11,6 +11,7 @@ namespace ya::enums
 		Particle,
 		MeshRenderer,
 		Script,
+		Camera,
 		End,
 	};
 
