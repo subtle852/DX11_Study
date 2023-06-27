@@ -58,20 +58,8 @@
     <Filter Include="GameObject\Component\Transform">
       <UniqueIdentifier>{1cf7d76d-2a63-4201-98fd-dcf32e0fbf27}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Graphics\Texture">
-      <UniqueIdentifier>{c223b344-a667-4a0b-9aac-b1db3c722d16}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics\Mesh">
-      <UniqueIdentifier>{b2e59455-c2b7-441b-a72d-ecbca16082b2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics\Material">
-      <UniqueIdentifier>{4967a99e-121e-416d-be12-d28f68ce0241}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Graphics\Renderer">
       <UniqueIdentifier>{8e1c582b-cea1-4f96-8e8b-cb6397c5e053}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Graphics\Shader">
-      <UniqueIdentifier>{37825052-3a9a-4a3e-9e94-badd91d2dad1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Graphics\GraphicDevice">
       <UniqueIdentifier>{963386e7-ad31-442d-834d-918754c09087}</UniqueIdentifier>
@@ -81,6 +69,18 @@
     </Filter>
     <Filter Include="GameObject\Component\Camera">
       <UniqueIdentifier>{b0d6c00f-8b80-4c02-ba3e-b0e54c703fc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Texture">
+      <UniqueIdentifier>{c223b344-a667-4a0b-9aac-b1db3c722d16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Shader">
+      <UniqueIdentifier>{37825052-3a9a-4a3e-9e94-badd91d2dad1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Material">
+      <UniqueIdentifier>{4967a99e-121e-416d-be12-d28f68ce0241}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Mesh">
+      <UniqueIdentifier>{b2e59455-c2b7-441b-a72d-ecbca16082b2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -142,19 +142,19 @@
       <Filter>GameObject\Component\Transform</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaTexture.h">
-      <Filter>Graphics\Texture</Filter>
+      <Filter>Resource\Texture</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaMesh.h">
-      <Filter>Graphics\Mesh</Filter>
+      <Filter>Resource\Mesh</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaMaterial.h">
-      <Filter>Graphics\Material</Filter>
+      <Filter>Resource\Material</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaRenderer.h">
       <Filter>Graphics\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaShader.h">
-      <Filter>Graphics\Shader</Filter>
+      <Filter>Resource\Shader</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaGraphicDevice_Dx11.h">
       <Filter>Graphics\GraphicDevice</Filter>
@@ -213,19 +213,19 @@
       <Filter>GameObject\Component\Transform</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaTexture.cpp">
-      <Filter>Graphics\Texture</Filter>
+      <Filter>Resource\Texture</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMesh.cpp">
-      <Filter>Graphics\Mesh</Filter>
+      <Filter>Resource\Mesh</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMaterial.cpp">
-      <Filter>Graphics\Material</Filter>
+      <Filter>Resource\Material</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaRenderer.cpp">
       <Filter>Graphics\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaShader.cpp">
-      <Filter>Graphics\Shader</Filter>
+      <Filter>Resource\Shader</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaGraphicDevice_Dx11.cpp">
       <Filter>Graphics\GraphicDevice</Filter>
