@@ -7,6 +7,7 @@
 #include "yaMesh.h"
 #include "yaCameraScript.h"
 #include "yaCamera.h"
+#include "yaSceneManager.h"
 
 namespace ya
 {

@@ -1,5 +1,6 @@
 #include "yaSceneManager.h"
-#include "yaPlayScene.h"
+//#include "yaPlayScene.h"
+
 
 
 namespace ya
@@ -9,12 +10,7 @@ namespace ya
 
 	void SceneManager::Initialize()
 	{
-		//PlayScene* test = new PlayScene();
 
-		mActiveScene = new PlayScene();
-		mScenes.insert(std::make_pair(L"PlayScene", mActiveScene));
-
-		mActiveScene->Initialize();
 	}
 	void SceneManager::Update()
 	{
@@ -31,12 +27,25 @@ namespace ya
 
 	void SceneManager::Release()
 	{
-		for (auto iter : mScenes)
+		for (auto& iter : mScenes)
 		{
 			delete iter.second;
 			iter.second = nullptr;
 		}
 	}
+
+	//bool SceneManager::CreateScene(std::wstring name, Scene* scene)
+	//{
+	//	std::map<std::wstring, Scene*>::iterator iter
+	//		= mScenes.find(name);
+
+	//	if (iter != mScenes.end())
+	//		return false;
+
+	//	mScenes.insert(std::make_pair(name, scene));
+	//	scene->Initialize();
+	//	return true;
+	//}
 
 	Scene* SceneManager::LoadScene(std::wstring name)
 	{

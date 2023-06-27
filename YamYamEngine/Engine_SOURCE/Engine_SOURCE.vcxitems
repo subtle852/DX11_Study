@@ -16,7 +16,6 @@
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaCamera.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaCameraScript.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaApplication.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaComponent.h" />
@@ -32,7 +31,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaMesh.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaMeshRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YamYamEngine.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaPlayScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaResources.h" />
@@ -46,7 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaCamera.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaCameraScript.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaApplication.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaComponent.cpp" />
@@ -59,7 +56,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMesh.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMeshRenderer.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaPlayScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaResource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaResources.cpp" />
