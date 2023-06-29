@@ -1,5 +1,5 @@
 #pragma once
-#include "yaSceneManager.h"
+#include "..\Engine_SOURCE\yaSceneManager.h"
 #include "yaPlayScene.h"
 
 #ifdef _DEBUG

@@ -3,10 +3,17 @@
 
 #include "framework.h"
 #include "Editor_Window.h"
-#include "yaApplication.h"
-#include "yaRenderer.h"
-#include "yaResources.h"
+
+#include "..\Engine_SOURCE\yaApplication.h"
+#include "..\Engine_SOURCE\yaRenderer.h"
+#include "..\Engine_SOURCE\yaResources.h"
 #include "LoadScenes.h"
+
+#ifdef _DEBUG
+#pragma comment(lib, "..\\x64\\Debug\\YamYamEngine.lib")
+#else
+#pragma comment(lib, "..\\x64\\Release\\YamYamEngine.lib")
+#endif
 
 ya::Application application;
 
