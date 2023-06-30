@@ -23,6 +23,7 @@ namespace ya
 	}
 	void MeshRenderer::Render()
 	{
+
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		tr->BindConstantBuffer();
 
