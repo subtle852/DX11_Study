@@ -153,10 +153,12 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="LoadScenes.h" />
     <ClInclude Include="yaCameraScript.h" />
+    <ClInclude Include="yaGridScript.h" />
     <ClInclude Include="yaPlayScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="yaCameraScript.cpp" />
+    <ClCompile Include="yaGridScript.cpp" />
     <ClCompile Include="YamYamEngine.cpp" />
     <ClCompile Include="yaPlayScene.cpp" />
   </ItemGroup>
