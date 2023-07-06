@@ -9,6 +9,7 @@
 #include "yaCamera.h"
 #include "yaSceneManager.h"
 #include "yaGridScript.h"
+#include "yaObject.h"
 
 namespace ya
 {
@@ -26,14 +27,14 @@ namespace ya
 
 
 		{
-			GameObject* player = new GameObject();
+			GameObject* player 
+				= object::Instantiate<GameObject>(Vector3(0.0f, 0.0f, 1.0001f), eLayerType::Player);
+
 			player->SetName(L"Zelda");
-			AddGameObject(eLayerType::Player, player);
+			
 			MeshRenderer* mr = player->AddComponent<MeshRenderer>();
 			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 			mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
-			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0001f));
-			//player->AddComponent<CameraScript>();
 
 			GameObject* player2 = new GameObject();
 			player2->SetName(L"ZeldaChild");
