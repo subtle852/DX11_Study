@@ -70,9 +70,6 @@ namespace gui
 	}
 	void Editor::Render()
 	{
-		//Microsoft::WRL::ComPtr<ID3D11DepthStencilState> ds
-		//	= renderer::depthStencilStates[(UINT)ya::graphics::eDSType::Less];
-		//ya::graphics::GetDevice()->BindDepthStencilState(ds.Get());
 
 		for (EditorObject* obj : mEditorObjects)
 		{
@@ -84,6 +81,7 @@ namespace gui
 		{
 			DebugRender(mesh);
 		}
+		renderer::debugMeshs.clear();
 	}
 	void Editor::Release()
 	{
