@@ -21,6 +21,7 @@ namespace ya
 		void OnCollisionExit(Collider2D* other);
 
 		void SetType(eColliderType type) { mType = type; }
+		Vector2 GetSize() { return mSize; }
 		void SetSize(Vector2 size) { mSize = size; }
 		void SetCenter(Vector2 size) { mCenter = size; }
 		UINT GetColliderID() { return mColliderID; }

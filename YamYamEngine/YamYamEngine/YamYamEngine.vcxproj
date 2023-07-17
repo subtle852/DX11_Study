@@ -154,12 +154,14 @@
     <ClInclude Include="LoadScenes.h" />
     <ClInclude Include="yaCameraScript.h" />
     <ClInclude Include="yaGridScript.h" />
+    <ClInclude Include="yaPlayerScript.h" />
     <ClInclude Include="yaPlayScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="yaCameraScript.cpp" />
     <ClCompile Include="yaGridScript.cpp" />
     <ClCompile Include="YamYamEngine.cpp" />
+    <ClCompile Include="yaPlayerScript.cpp" />
     <ClCompile Include="yaPlayScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
