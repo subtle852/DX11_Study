@@ -29,6 +29,14 @@ namespace renderer
 		Vector4 CameraPosition;
 		Vector2 CameraScale;
 		Vector2 Resolution;
+	}; 
+
+	CBUFFER(AnimatorCB, CBSLOT_ANIMATION2D)
+	{
+		Vector2 spriteLeftTop;
+		Vector2 spriteSize;
+		Vector2 spriteOffset;
+		Vector2 atlasSize;
 	};
 
 	extern ya::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End];
