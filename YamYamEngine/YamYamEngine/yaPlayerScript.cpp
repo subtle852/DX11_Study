@@ -4,9 +4,22 @@
 #include "yaGameObject.h"
 #include "yaTime.h"
 #include "yaInput.h"
+#include "yaAnimator.h"
 
 namespace ya
 {
+	PlayerScript::PlayerScript()
+	{
+	}
+	PlayerScript::~PlayerScript()
+	{
+	}
+	void PlayerScript::Initialize()
+	{
+		Animator* at = GetOwner()->GetComponent<Animator>();
+		at->CompleteEvent(L"Idle") = std::bind(&PlayerScript::Complete, this);
+
+	}
 	void PlayerScript::Update()
 	{
 		Transform* tr = GetOwner()->GetComponent<Transform>();
@@ -35,5 +48,9 @@ namespace ya
 			tr->SetPosition(pos);
 		}
 
+	}
+	void PlayerScript::Complete()
+	{
+		int a = 0;
 	}
 }

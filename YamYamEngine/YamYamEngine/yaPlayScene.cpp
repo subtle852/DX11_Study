@@ -39,7 +39,7 @@ namespace ya
 
 			MeshRenderer* mr = player->AddComponent<MeshRenderer>();
 			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-			mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial"));
+			mr->SetMaterial(Resources::Find<Material>(L"SpriteAnimaionMaterial"));
 
 			const float pi = 3.141592f;
 			float degree = pi / 8.0f;
@@ -53,7 +53,10 @@ namespace ya
 			Animator* at = player->AddComponent<Animator>();
 			at->Create(L"Idle", atlas, Vector2(0.0f, 0.0f), Vector2(120.0f, 130.0f), 3);
 
+			//at->CompleteEvent(L"Idle") = std::bind();
+
 			at->PlayAnimation(L"Idle", true);
+			player->AddComponent<PlayerScript>();
 		}
 
 		{
@@ -66,7 +69,7 @@ namespace ya
 			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0f));
 			Collider2D* cd = player->AddComponent<Collider2D>();
 			//cd->SetSize(Vector2(1.2f, 1.2f));
-			player->AddComponent<PlayerScript>();
+			//player->AddComponent<PlayerScript>();
 		}
 
 		//{
@@ -93,15 +96,16 @@ namespace ya
 			renderer::mainCamera = cameraComp;
 		}
 		
-		//UI Camera
-		{
-			GameObject* camera = new GameObject();
-			AddGameObject(eLayerType::Player, camera);
-			camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
-			Camera* cameraComp = camera->AddComponent<Camera>();
-			cameraComp->TurnLayerMask(eLayerType::Player, false);
-			//camera->AddComponent<CameraScript>();
-		}
+		////UI Camera
+		//{
+		//	GameObject* camera = new GameObject();
+		//	AddGameObject(eLayerType::Player, camera);
+		//	camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
+		//	Camera* cameraComp = camera->AddComponent<Camera>();
+		//	cameraComp->TurnLayerMask(eLayerType::Player, false);
+		//	cameraComp->TurnLayerMask(eLayerType::Monster, false);
+		//	//camera->AddComponent<CameraScript>();
+		//}
 
 		//{
 		//	GameObject* grid = new GameObject();

@@ -86,6 +86,7 @@ namespace ya
 				mScripts.push_back(script);
 			
 			comp->SetOwner(this);
+			comp->Initialize();
 
 			return comp;
 		}
