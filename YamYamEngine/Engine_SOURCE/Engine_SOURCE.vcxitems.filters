@@ -94,6 +94,9 @@
     <Filter Include="Resource\Animation">
       <UniqueIdentifier>{f894fb39-8b52-43b6-9097-8e339c38a6cb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Graphics\StructedBuffer">
+      <UniqueIdentifier>{8684803b-7123-46d9-b9b7-cbbcfeb0a020}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -192,6 +195,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaAnimation.h">
       <Filter>Resource\Animation</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaLight.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaStructedBuffer.h">
+      <Filter>Graphics\StructedBuffer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMath.cpp">
@@ -274,6 +281,10 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaAnimation.cpp">
       <Filter>Resource\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaLight.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaStructedBuffer.cpp">
+      <Filter>Graphics\StructedBuffer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

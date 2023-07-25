@@ -5,6 +5,7 @@
 #include "yaShader.h"
 #include "yaConstantBuffer.h"
 #include "yaCamera.h"
+#include "yaLight.h"
 
 using namespace ya::math;
 using namespace ya::graphics;
@@ -47,11 +48,13 @@ namespace renderer
 	extern Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[];
 	extern Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[];
 
+	extern std::vector<ya::Light*> lights;
 	extern ya::Camera* mainCamera;
 	extern std::vector<ya::Camera*> cameras;
 	extern std::vector<DebugMesh> debugMeshs;
 
 	void Initialize();
+	void BindLights();
 	void Render();
 	void Release();
 
