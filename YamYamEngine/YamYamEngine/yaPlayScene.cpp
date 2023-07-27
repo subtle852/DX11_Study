@@ -16,6 +16,7 @@
 #include "yaCollisionManager.h"
 #include "yaAnimator.h"
 #include "yaLight.h"
+#include "yaComputeShader.h"
 
 namespace ya
 {
@@ -29,7 +30,11 @@ namespace ya
 	{
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
 
+		ComputeShader* cs = new ComputeShader();
+		cs->Create(L"PaintCS.hlsl", "main");
+
 		{
+
 			GameObject* player 
 				= object::Instantiate<GameObject>(Vector3(0.0f, 0.0f, 1.0001f), eLayerType::Player);
 
