@@ -17,6 +17,7 @@
 #include "yaAnimator.h"
 #include "yaLight.h"
 #include "yaComputeShader.h"
+#include "yaPaintShader.h"
 
 namespace ya
 {
@@ -30,8 +31,10 @@ namespace ya
 	{
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
 
-		ComputeShader* cs = new ComputeShader();
-		cs->Create(L"PaintCS.hlsl", "main");
+		std::shared_ptr<PaintShader> paintShader = Resources::Find<PaintShader>(L"PaintShader");
+		std::shared_ptr<Texture> paintTexture = Resources::Find<Texture>(L"PaintTexuture");
+		paintShader->SetTarget(paintTexture);
+		paintShader->OnExcute();
 
 		{
 

@@ -6,7 +6,9 @@ namespace ya::graphics
 	ComputeShader::ComputeShader()
 		: Resource(enums::eResourceType::ComputeShader)
 	{
-
+		mThreadGroupCountX = 32;
+		mThreadGroupCountY = 32;
+		mThreadGroupCountZ = 1;
 	}
 
 	ComputeShader::~ComputeShader()
@@ -29,5 +31,20 @@ namespace ya::graphics
 				, mCSBlob->GetBufferSize(), mCS.GetAddressOf());
 
 		return true;
+	}
+	void ComputeShader::OnExcute()
+	{
+		Binds();
+
+		GetDevice()->BindComputeShader(mCS.Get());
+		GetDevice()->Dispatch(mGroupX, mGroupY, mGroupZ);
+
+		Clear();
+	}
+	void ComputeShader::Binds()
+	{
+	}
+	void ComputeShader::Clear()
+	{
 	}
 }

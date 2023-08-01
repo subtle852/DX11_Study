@@ -97,6 +97,9 @@
     <Filter Include="Graphics\StructedBuffer">
       <UniqueIdentifier>{8684803b-7123-46d9-b9b7-cbbcfeb0a020}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource\Shader\CS">
+      <UniqueIdentifier>{0b9ddc95-f89a-47d2-a441-2e2079496723}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -199,7 +202,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaStructedBuffer.h">
       <Filter>Graphics\StructedBuffer</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaComputeShader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaComputeShader.h">
+      <Filter>Resource\Shader\CS</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaPaintShader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMath.cpp">
@@ -287,7 +293,10 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaStructedBuffer.cpp">
       <Filter>Graphics\StructedBuffer</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaComputeShader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaComputeShader.cpp">
+      <Filter>Resource\Shader\CS</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaPaintShader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)yaMath.inl">

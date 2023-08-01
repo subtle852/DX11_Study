@@ -3,6 +3,7 @@
 #include "yaTexture.h"
 #include "yaMaterial.h"
 #include "yaStructedBuffer.h"
+#include "yaPaintShader.h"
 
 
 namespace renderer
@@ -319,6 +320,19 @@ namespace renderer
 		debugShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		debugShader->SetRSState(eRSType::WireframeNone);
 		ya::Resources::Insert(L"DebugShader", debugShader);
+
+		std::shared_ptr<PaintShader> paintShader = std::make_shared<PaintShader>();
+		paintShader->Create(L"PaintCS.hlsl", "main");
+		ya::Resources::Insert(L"PaintShader", paintShader);
+	}
+
+	void LoadTexture()
+	{
+		//paint texture
+		std::shared_ptr<Texture> uavTexture = std::make_shared<Texture>();
+		uavTexture->Create(1024, 1024, DXGI_FORMAT_R8G8B8A8_UNORM, D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_UNORDERED_ACCESS);
+		ya::Resources::Insert(L"PaintTexuture", uavTexture);
+
 	}
 
 	void LoadMaterial()
@@ -335,7 +349,8 @@ namespace renderer
 		material->SetTexture(texture);
 		Resources::Insert(L"SpriteMaterial", material);
 
-		texture = Resources::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");
+		//texture = Resources::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");
+		texture = Resources::Find<Texture>(L"PaintTexuture");
 		material = std::make_shared<Material>();
 		material->SetShader(spriteShader);
 		material->SetTexture(texture);
@@ -362,6 +377,16 @@ namespace renderer
 		material = std::make_shared<Material>();
 		material->SetShader(debugShader);
 		Resources::Insert(L"DebugMaterial", material);
+
+
+		//std::shared_ptr<Shader> debugShader
+		//	= Resources::Find<Shader>(L"DebugShader");
+
+		//material = std::make_shared<Material>();
+		//material->SetShader(debugShader);
+		//Resources::Insert(L"PaintMaterial", material);
+
+
 	}
 
 	void Initialize()
@@ -370,6 +395,7 @@ namespace renderer
 		LoadBuffer();
 		LoadShader();
 		SetupState();
+		LoadTexture();
 		LoadMaterial();
 	}
 
