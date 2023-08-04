@@ -15,6 +15,7 @@
 #define CBSLOT_TRANSFORM		0
 #define CBSLOT_GRID				2
 #define CBSLOT_ANIMATION2D		3
+#define CBSLOT_PARTICLE			4
 //#define CBSLOT_PARTICLE			1
 
 namespace ya::graphics
@@ -36,6 +37,7 @@ namespace ya::graphics
 		Material,
 		Grid,
 		Animator,
+		Particle,
 		End,
 	};
 
@@ -80,9 +82,11 @@ namespace ya::graphics
 		End,
 	};
 
-	enum class eSRVType
+	enum class eViewType
 	{
 		None,
+		SRV,
+		UAV,
 		End,
 	};
 
