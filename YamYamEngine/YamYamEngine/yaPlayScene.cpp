@@ -19,6 +19,9 @@
 #include "yaComputeShader.h"
 #include "yaPaintShader.h"
 #include "yaParticleSystem.h"
+#include "yaAudioListener.h"
+#include "yaAudioClip.h"
+#include "yaAudioSource.h"
 
 namespace ya
 {
@@ -67,17 +70,24 @@ namespace ya
 
 			at->PlayAnimation(L"Idle", true);
 			player->AddComponent<PlayerScript>();
+			//player->GetComponent<Transform>()->SetScale(Vector3(50.2f, 50.2f, 50.2f));
 		}
 
 		{
+			
 			GameObject* player = new GameObject();
 			player->SetName(L"Smile");
 			AddGameObject(eLayerType::Monster, player);
 			MeshRenderer* mr = player->AddComponent<MeshRenderer>();
 			mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 			mr->SetMaterial(Resources::Find<Material>(L"SpriteMaterial02"));
-			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0f));
+			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -9.0f));
+			//player->GetComponent<Transform>()->SetScale(Vector3(50.2f, 50.2f, 50.2f));
 			Collider2D* cd = player->AddComponent<Collider2D>();
+
+			AudioSource* as = player->AddComponent<AudioSource>();
+			as->SetClip(Resources::Load<AudioClip>(L"TestSound", L"..\\Resources\\Sound\\0.mp3"));
+			as->Play();
 			//cd->SetSize(Vector2(1.2f, 1.2f));
 			//player->AddComponent<PlayerScript>();
 		}
@@ -135,6 +145,8 @@ namespace ya
 			camera->AddComponent<CameraScript>();
 			renderer::cameras.push_back(cameraComp);
 			renderer::mainCamera = cameraComp;
+
+			camera->AddComponent<AudioListener>();
 		}
 		
 		////UI Camera
